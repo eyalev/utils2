@@ -9,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='py_utils',
+    name='utils2',
     version='0.1.1',
     description='Utils for various scenarios',
     long_description=long_description,
@@ -26,5 +26,6 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
     ],
+    packages=['utils2'],
     install_requires=['six', 'python-dateutil'],
 )

@@ -2,6 +2,6 @@
 *.swp
 *.egg
 dist
-py_utils.egg-info/
+utils2.egg-info/
 debug/
 build/
