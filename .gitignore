@@ -2,3 +2,4 @@
 *.swp
 *.egg
 dist
+py_utils.egg-info/
