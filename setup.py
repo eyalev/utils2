@@ -10,7 +10,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='py_utils',
-    version='0.1',
+    version='0.1.1',
     description='Utils for various scenarios',
     long_description=long_description,
     url='https://github.com/eyalev/py_utils',
