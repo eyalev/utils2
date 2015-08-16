@@ -35,6 +35,8 @@ class RequestUtil(object):
             else:
 
                 _response = requests.get(self.url)
+                self._response = _response
+                self._content = _response.text
                 return _response
 
     response = get
