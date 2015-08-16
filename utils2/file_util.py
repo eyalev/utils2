@@ -1,7 +1,7 @@
 import json
 
 from bash import bash
-from .gcs_filie_util import GCSFileUtil
+from .gcs_file_util import GCSFileUtil
 
 
 class FileUtil(object):

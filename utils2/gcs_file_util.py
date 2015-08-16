@@ -1,4 +1,5 @@
 import json
+import codecs
 
 from .string_util import StringUtil
 from .log_util import LogUtil
@@ -24,6 +25,11 @@ class GCSFileUtil(object):
         self.full_path = self._validate(full_path)
         self.url = 'gs:/' + self.full_path
         self.storage_method = 'local'
+
+    def write_utf8(self, string):
+
+        with codecs.open(self.file_path, 'w', "utf-8-sig") as file_object:
+            file_object.write(string)
 
     def write_from_file(self, file_path, header=None):
 
