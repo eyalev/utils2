@@ -44,6 +44,8 @@ class RequestUtil(object):
         self.get()
         return self._content
 
+    data = content
+
     def content_dict(self):
 
         return JSONUtil(self.content()).to_odict()
