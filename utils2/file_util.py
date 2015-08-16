@@ -1,10 +1,19 @@
 import json
 
+from bash import bash
+from .gcs_filie_util import GCSFileUtil
+
 
 class FileUtil(object):
 
     def __init__(self, file_path):
         self.file_path = file_path
+
+    def read(self):
+        with open(self.file_path) as _file:
+            data = _file.read()
+
+        return data
 
     def to_dict(self):
         with open(self.file_path) as json_data:
@@ -19,3 +28,20 @@ class FileUtil(object):
 
         with open(self.file_path, 'w') as file_object:
             file_object.write(string)
+
+    def write_with_curl_from(self, url):
+
+        command = "curl '{url}' -o {file_path}".format(
+            url=url,
+            file_path=self.file_path
+        )
+
+        print(command)
+
+        bash_result = bash(command)
+
+        print(bash_result)
+
+    def write_to_gcs(self, gcs_file_url):
+
+        GCSFileUtil(gcs_file_url).write(self.file_path)

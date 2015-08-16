@@ -69,7 +69,9 @@ class GCSFileUtil(object):
 
         return content
 
-    # def write(self, content):
+    def write(self, content):
+
+        pass
     #
     #     gcs_local_file = gcs.open(
     #         self.full_path,
