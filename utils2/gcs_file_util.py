@@ -3,7 +3,7 @@ import json
 from .string_util import StringUtil
 from .log_util import LogUtil
 from bash import bash
-from google.appengine.api import app_identity, urlfetch
+
 
 # import share.lib.cloudstorage as gcs
 
@@ -55,6 +55,8 @@ class GCSFileUtil(object):
     #     return content
 
     def remote_content(self):
+
+        from google.appengine.api import app_identity, urlfetch
 
         prod_url = 'http://storage.googleapis.com' + self.full_path
         LogUtil().info('GCSFile fetch: ' + prod_url)
