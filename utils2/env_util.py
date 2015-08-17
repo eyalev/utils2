@@ -1,8 +1,5 @@
 import os
 
-from google.appengine.api import app_identity
-from google.appengine.api import modules
-
 
 class EnvUtil(object):
 
@@ -34,13 +31,17 @@ class EnvUtil(object):
         return os.getenv('CODESHIP') == 'TRUE'
 
     def app_id(self):
+        from google.appengine.api import app_identity
+
         return app_identity.get_application_id()
 
     def version_name(self):
+        from google.appengine.api import modules
 
         return modules.get_current_version_name()
 
     def module_name(self):
+        from google.appengine.api import modules
 
         return modules.get_current_module_name()
 

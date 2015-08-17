@@ -23,7 +23,7 @@ class RequestUtil(object):
             if self.appengine_env:
 
                 from google.appengine.api import urlfetch
-                
+
                 _response = urlfetch.fetch(
                     self.url,
                     deadline=15
