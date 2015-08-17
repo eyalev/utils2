@@ -1,5 +1,5 @@
 import requests
-from google.appengine.api import urlfetch
+
 from requests.exceptions import ConnectionError
 from .env_util import EnvUtil
 from .json_util import JSONUtil
@@ -22,6 +22,8 @@ class RequestUtil(object):
 
             if self.appengine_env:
 
+                from google.appengine.api import urlfetch
+                
                 _response = urlfetch.fetch(
                     self.url,
                     deadline=15
