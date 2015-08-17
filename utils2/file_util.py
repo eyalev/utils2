@@ -1,4 +1,5 @@
 import json
+import codecs
 
 from bash import bash
 from .gcs_file_util import GCSFileUtil
@@ -27,6 +28,11 @@ class FileUtil(object):
     def write(self, string):
 
         with open(self.file_path, 'w') as file_object:
+            file_object.write(string)
+
+    def write_utf8(self, string):
+
+        with codecs.open(self.file_path, 'w', "utf-8-sig") as file_object:
             file_object.write(string)
 
     def write_with_curl_from(self, url):
