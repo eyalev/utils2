@@ -2,10 +2,6 @@ import json
 
 from .string_util import StringUtil
 from .log_util import LogUtil
-from bash import bash
-
-
-# import share.lib.cloudstorage as gcs
 
 
 def gcs_file(path):
@@ -27,6 +23,8 @@ class GCSFileUtil(object):
 
     def write_from_file(self, file_path, header=None):
 
+        from bash import bash
+
         command = 'gsutil {header} cp {file_path} {gcs_url}'.format(
             header=header,
             file_path=file_path,
@@ -39,20 +37,25 @@ class GCSFileUtil(object):
         print(bash_result)
 
     def content(self):
-        # if self.storage_method == 'local':
-        #     return self.local_content()
-        # elif self.storage_method == 'remote':
-        return self.remote_content()
+        if self.storage_method == 'local':
+            return self.local_content()
+        elif self.storage_method == 'remote':
+            return self.remote_content()
+
+    read = content
 
     def to_json_object(self):
 
         return StringUtil(self.content()).to_json_object()
 
-    # def local_content(self):
-    #     gcs_file = gcs.open(self.full_path)
-    #     content = gcs_file.read()
-    #     gcs_file.close()
-    #     return content
+    def local_content(self):
+
+        import cloudstorage as gcs
+
+        _gcs_file = gcs.open(self.full_path)
+        content = _gcs_file.read()
+        _gcs_file.close()
+        return content
 
     def remote_content(self):
 
@@ -73,17 +76,17 @@ class GCSFileUtil(object):
 
     def write(self, content):
 
-        pass
-    #
-    #     gcs_local_file = gcs.open(
-    #         self.full_path,
-    #         'w',
-    #         content_type='text/plain',
-    #     )
-    #
-    #     gcs_local_file.write(str(content))
-    #
-    #     gcs_local_file.close()
+        import cloudstorage as gcs
+
+        gcs_local_file = gcs.open(
+            self.full_path,
+            'w',
+            content_type='text/plain',
+        )
+
+        gcs_local_file.write(str(content))
+
+        gcs_local_file.close()
 
     def _validate(self, full_path):
 
