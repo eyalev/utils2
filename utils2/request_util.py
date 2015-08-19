@@ -26,7 +26,7 @@ class RequestUtil(object):
 
                 _response = urlfetch.fetch(
                     self.url,
-                    deadline=15
+                    deadline=60
                 )
 
                 self._response = _response
