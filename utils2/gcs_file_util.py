@@ -16,10 +16,10 @@ def gcs_dict(path):
 
 class GCSFileUtil(object):
 
-    def __init__(self, full_path=None):
+    def __init__(self, full_path=None, storage_env='local'):
         self.full_path = self._validate(full_path)
         self.url = 'gs:/' + self.full_path
-        self.storage_method = 'local'
+        self.storage_env = storage_env
 
     def write_from_file(self, file_path, header=None):
 
@@ -37,9 +37,9 @@ class GCSFileUtil(object):
         print(bash_result)
 
     def content(self):
-        if self.storage_method == 'local':
+        if self.storage_env == 'local':
             return self.local_content()
-        elif self.storage_method == 'remote':
+        elif self.storage_env == 'remote':
             return self.remote_content()
 
     read = content
