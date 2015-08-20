@@ -1,4 +1,5 @@
 import sys
+import inspect
 import distutils.sysconfig
 
 
@@ -15,7 +16,9 @@ class Util(object):
 
     def cli_prompt(self):
 
-        return __name__ == '__main__'
+        local = inspect.stack()[1][0].f_locals
+        module = local.get("__name__", None)
+        return module == "__main__"
 
     def hello(self):
 
