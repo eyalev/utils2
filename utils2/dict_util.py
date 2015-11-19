@@ -1,8 +1,6 @@
 import json
 
-from collections import OrderedDict
-
-odict = OrderedDict
+from collections import OrderedDict as odict
 
 
 class DictUtil(object):
@@ -11,7 +9,7 @@ class DictUtil(object):
         self._dict = _dict
 
     def sorted(self):
-        return OrderedDict(sorted(self._dict.items()))
+        return odict(sorted(self._dict.items()))
 
     @classmethod
     def merge(cls, *dict_args):
@@ -36,3 +34,12 @@ class DictUtil(object):
     def to_json_string(self):
 
         return json.dumps(self._dict)
+
+    def sort_od(self, _odict):
+        res = odict()
+        for k, v in sorted(_odict.items()):
+            if isinstance(v, dict):
+                res[k] = self.sort_od(v)
+            else:
+                res[k] = v
+        return res
