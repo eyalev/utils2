@@ -5,3 +5,6 @@ dist
 utils2.egg-info/
 debug/
 build/
+
+# IntelliJ IDE
+.idea/
