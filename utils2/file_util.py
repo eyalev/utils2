@@ -3,6 +3,7 @@ import codecs
 
 from bash import bash
 from .gcs_file_util import GCSFileUtil
+from .string_util import StringUtil
 
 
 class FileUtil(object):
@@ -15,6 +16,8 @@ class FileUtil(object):
             data = _file.read()
 
         return data
+
+    data = read
 
     def to_dict(self):
         with open(self.file_path) as json_data:
@@ -51,3 +54,11 @@ class FileUtil(object):
     def write_to_gcs(self, gcs_file_url):
 
         GCSFileUtil(gcs_file_url).write(self.file_path)
+
+    def is_empty(self):
+
+        return StringUtil(self.data()).is_empty()
+
+    def is_valid_json(self):
+
+        return StringUtil(self.data()).is_valid_json()
