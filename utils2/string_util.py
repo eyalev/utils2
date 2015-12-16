@@ -50,3 +50,17 @@ class StringUtil(object):
     def remove_new_lines(self):
 
         return self.string.replace('\n', '')
+
+    def is_empty(self):
+
+        return self.string is None or self.string == '' or self.string.isspace()
+
+    def is_valid_json(self):
+
+        try:
+            json.loads(self.string)
+            return True
+
+        except (ValueError, TypeError):
+            return False
+
