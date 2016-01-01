@@ -1,6 +1,7 @@
+from collections import OrderedDict
 import json
 
-from collections import OrderedDict as odict
+odict = OrderedDict
 
 
 class DictUtil(object):
