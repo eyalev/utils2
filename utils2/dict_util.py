@@ -36,6 +36,10 @@ class DictUtil(object):
 
         return json.dumps(self._dict)
 
+    def to_pretty_json_string(self):
+
+        return json.dumps(self._dict, indent=4)
+
     def sort_od(self, _odict):
         res = odict()
         for k, v in sorted(_odict.items()):
