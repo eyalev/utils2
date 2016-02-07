@@ -33,6 +33,11 @@ class FileUtil(object):
         with open(self.file_path, 'w') as file_object:
             file_object.write(string)
 
+    def write_binary(self, string):
+
+        with open(self.file_path, 'wb') as file_object:
+            file_object.write(string)
+
     def write_utf8(self, string):
 
         with codecs.open(self.file_path, 'w', "utf-8") as file_object:
