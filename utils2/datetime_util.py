@@ -21,6 +21,10 @@ class DatetimeUtil(object):
 
     now_iso_string = now_string
 
+    @staticmethod
+    def now_milli_string():
+        return datetime.utcnow().isoformat()[0:-3]
+
     def to_iso_format(self):
         return self._datetime.isoformat()
 
