@@ -1,7 +1,6 @@
 import json
 import codecs
 
-from bash import bash
 from .gcs_file_util import GCSFileUtil
 from .string_util import StringUtil
 
@@ -44,6 +43,7 @@ class FileUtil(object):
             file_object.write(string)
 
     def write_with_curl_from(self, url):
+        from bash import bash
 
         command = "curl '{url}' -o {file_path}".format(
             url=url,
