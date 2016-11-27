@@ -1,6 +1,6 @@
 import unittest
 
-from unittest.mock import MagicMock
+from mock import MagicMock
 from utils2.file_util import FileUtil
 
 
