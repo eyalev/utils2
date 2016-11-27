@@ -27,5 +27,5 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     packages=['utils2'],
-    install_requires=['six', 'python-dateutil', 'requests', 'bash'],
+    install_requires=['six', 'python-dateutil', 'requests', 'bash', 'click'],
 )
