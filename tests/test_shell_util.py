@@ -17,12 +17,15 @@ class TestShellUtil(unittest.TestCase):
 
         test_file_path = '/tmp/test_shell_util.txt'
 
-        Path(test_file_path).unlink()
+        test_file = Path(test_file_path)
+
+        if test_file.exists():
+            test_file.unlink()
 
         command = "echo -n 'test2' > '{test_file_path}'".format(test_file_path=test_file_path)
 
         run(command)
 
-        text = Path(test_file_path).read_text()
+        text = test_file.read_text()
 
         self.assertEqual(text, 'test2')
